@@ -7,3 +7,4 @@ Useful tools when working in an Oracle Database.
   <h3>table-profile.sql</h3>
   This script creates a few database objects (one type object, one type table, and one function). The script does some quick profiling of each column in a given table. Once the objects in the script have been created, you can pass a table name to the function to retrieve details about each column in table.
   
+<b> Example </b> ''' select * from table(data_profile('dual')) '''
