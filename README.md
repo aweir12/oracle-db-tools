@@ -11,7 +11,7 @@ Useful tools when working in an Oracle Database.
 
 <b> Example Output: </b>
 ```
-TABLE_NAME                               COLUMN_NAME                               COLUMN_ID   N_UNIQUE
----------------------------------------- ---------------------------------------- ---------- ----------
-DUAL                                     DUMMY                                             1          1
+TABLE_NAME                               COLUMN_NAME                               COLUMN_ID   N_UNIQUE     N_NULL
+---------------------------------------- ---------------------------------------- ---------- ---------- ----------
+DUAL                                     DUMMY                                             1          1          0
 ```
