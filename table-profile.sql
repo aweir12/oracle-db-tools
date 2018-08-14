@@ -24,12 +24,12 @@ CREATE OR REPLACE FUNCTION data_profile (
                  FROM
         all_tab_cols
                  WHERE
-        table_name = UPPER(table_name_in)
+        table_name = upper(table_name_in)
     ORDER BY
         column_id;
 
     n_unique_cnt   NUMBER;
-    n_null_cnt NUMBER;
+    n_null_cnt     NUMBER;
 BEGIN
     v_ret := data_profile_table ();
     FOR rec_in IN c1 LOOP
@@ -38,9 +38,15 @@ BEGIN
         || ') from '
         || table_name_in INTO
             n_unique_cnt;
-        EXECUTE IMMEDIATE 'select count(*) from ' || table_name_in || ' where ' || rec_in.column_name || ' is null ' INTO n_null_cnt;
+        EXECUTE IMMEDIATE 'select count(*) from '
+        || table_name_in
+        || ' where '
+        || rec_in.column_name
+        || ' is null ' INTO
+            n_null_cnt;
+
         v_ret.extend;
-        v_ret(v_ret.COUNT) := data_profile_record(UPPER(table_name_in),rec_in.column_name,rec_in.column_id,n_unique_cnt, n_null_cnt);
+        v_ret(v_ret.count) := data_profile_record(upper(table_name_in),rec_in.column_name,rec_in.column_id,n_unique_cnt,n_null_cnt);
 
     END LOOP;
 
